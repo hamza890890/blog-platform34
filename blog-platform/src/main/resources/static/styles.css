@@ -1,0 +1,53 @@
+body {
+    background-color: #1a1a1a;
+    background-image: url('../images/bg-pattern.png'); /* Adjust path if necessary */
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #27a9e3;
+}
+.login-container .form-group label {
+    color: #ccc;
+}
+.login-container .form-group input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+}
+.login-container .btn-login {
+    width: 100%;
+    background-color: #27a9e3;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-container .form-check-label {
+    color: #ccc;
+}
+.login-container a {
+    color: #27a9e3;
+    text-decoration: none;
+}
+.login-container a:hover {
+    text-decoration: underline;
+}
+.registration-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+}

@@ -43,11 +43,11 @@ public class SecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("user")
-                .password(passwordEncoder().encode("yourStrongPassword")) // Replace with a strong password
+                .password(passwordEncoder().encode("123")) // Replace with a strong password
                 .roles("USER")
                 .and()
                 .withUser("admin")
-                .password(passwordEncoder().encode("yourAdminPassword")) // Replace with a strong admin password
+                .password(passwordEncoder().encode("456")) // Replace with a strong admin password
                 .roles("ADMIN");
     }
 

@@ -24,8 +24,8 @@
         </ul>
     </div>
 </nav>
-
-<div class="container">
+<!-- THIS USED TO BE JUST REGISTER AND THE PAGE WOULD NOT TAKE ME ANYWHERE THEN I ADDED CONTAINER AND NOW IT TAKES ME TO THE LOGIN PAGE -->
+<div class="register">
     <h2>Register</h2>
     <form th:action="@{/register}" method="post">
         <div class="form-group">
@@ -44,7 +44,7 @@
             <button type="submit" class="btn btn-primary">Register</button>
         </div>
         <div th:if="${error}">
-            <p class="error" th:text="${error}">Error message here</p>
+            <p class="error" th:text="${error}">An error has occured. Bad credentials?</p>
         </div>
     </form>
 </div>
