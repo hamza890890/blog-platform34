@@ -3,7 +3,7 @@ package com.example.controller;
 import com.example.model.Post;
 import com.example.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,11 +33,11 @@ public class PostController {
         return "create-post";
     }
 
-    @PostMapping("/post/new")
-    public String createPost(Post post, Authentication authentication) {
-        postService.createPost(post, authentication.getName());
-        return "redirect:/";
-    }
+//    @PostMapping("/post/new")
+//    public String createPost(Post post, Authentication authentication) {
+//        postService.createPost(post, authentication.getName());
+//        return "redirect:/";
+//    }
 
     @GetMapping("/post/edit/{id}")
     public String showEditPostForm(@PathVariable("id") Long id, Model model) {
@@ -58,4 +58,3 @@ public class PostController {
         return "redirect:/";
     }
 }
-
