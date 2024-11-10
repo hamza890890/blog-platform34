@@ -13,10 +13,10 @@ public class AppController {
 //
 //    }
 
-    @GetMapping("/register")
-    public String home(Model model) {
-        model.addAttribute("name", "World");
-        return "register";  // Thymeleaf will look for home.html in src/main/resources/templates
-    }
+//    @GetMapping("/register")
+//    public String home(Model model) {
+//        model.addAttribute("name", "World");
+//        return "register";  // Thymeleaf will look for home.html in src/main/resources/templates
+//    }
 
 }

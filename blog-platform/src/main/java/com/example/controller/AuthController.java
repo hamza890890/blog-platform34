@@ -14,12 +14,6 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
-    }
-
     @PostMapping("/register")
     public String registerUser(User user, Model model) {
         System.out.println("Registering user: " + user.getUsername());
@@ -30,9 +24,15 @@ public class AuthController {
             return "register";
         }
     }
+    @GetMapping("/register")
+    public String showRegisterForm() {
+        return "register";
+    }
+
 
     @GetMapping("/login")
     public String showLoginForm() {
+        System.out.println("login");
         return "login";
     }
 }
