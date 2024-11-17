@@ -46,7 +46,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto"> <!-- Apply ms-auto here for right alignment -->
+        <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/}">Home</a>
             </li>
@@ -75,6 +75,17 @@
                                 class="form-control form-control-lg"
                                 required />
                         <label for="username" class="form-label d-block text-center">Username</label>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group mb-4">
+                        <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-control form-control-lg"
+                                required />
+                        <label for="email" class="form-label d-block text-center">Email</label>
                     </div>
 
                     <!-- Password -->
