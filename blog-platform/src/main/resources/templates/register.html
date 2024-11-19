@@ -66,6 +66,16 @@
                 <h2 class="fw-bold mb-4 text-uppercase text-center">Register</h2>
                 <p class="text-center">Join our community by filling out the form below!</p>
                 <form th:action="@{/register}" method="post">
+                    <!-- Email -->
+                    <div class="form-group mb-4">
+                        <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-control form-control-lg"
+                                required />
+                        <label for="email" class="form-label d-block text-center">Email</label>
+                    </div>
                     <!-- Username -->
                     <div class="form-group mb-4">
                         <input
