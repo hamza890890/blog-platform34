@@ -13,7 +13,7 @@ public class AuthService {
     private UserRepository userRepository;
 
 //    @Autowired
-//    private PasswordEncoder passwordEncoder;
+//    private PasswordEncoder;
 
     public boolean registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
@@ -23,5 +23,19 @@ public class AuthService {
         userRepository.save(user);
         return true;
     }
+
+    /*public boolean loginUser(User user) {
+        // Retrieve the user from the repository based on the username
+        User existingUser = userRepository.findByUsername(user.getUsername());
+
+        // Check if the user exists and the password matches
+        String passwordEncoder = "";
+        if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+            return true; // Login successful
+        }
+
+        return false; // Login failed
+    }
+    */
 }
 

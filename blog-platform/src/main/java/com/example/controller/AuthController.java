@@ -36,4 +36,17 @@ public class AuthController {
         System.out.println("login");
         return "login";
     }
+
+   /* @PostMapping("/login")
+    public String loginUser(User user, Model model) {
+        System.out.println("Logging in user: " + user.getUsername());
+        if (authService.loginUser(user)) {
+            return "redirect:/personal-feed";
+        } else {
+            model.addAttribute("loginError", "User does not exist, check credentials. ");
+            return "login";
+        }
+    }
+
+    */
 }
