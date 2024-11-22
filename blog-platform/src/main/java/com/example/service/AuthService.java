@@ -16,7 +16,7 @@ public class AuthService {
     private UserRepository userRepository;
 
 //    @Autowired
-    //private PasswordEncoder;
+    //  private PasswordEncoder;
 
     public boolean registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
@@ -26,6 +26,29 @@ public class AuthService {
         userRepository.save(user);
         return true;
     }
+
+    public boolean loginUser(User user) {
+        // Retrieve the user from the repository based on the username
+        User existingUser = userRepository.findByUsername(user.getUsername());
+
+        // Check if the user exists and the passwords match
+        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+            return true; // Login successful
+        }
+
+        return false; // Login failed
+    }
+    public boolean isUsernameTaken(String username) {
+        // Example logic: Check the user repository or database
+        return userRepository.existsByUsername(username);
+    }
+
+    public boolean isEmailInUse(String email) {
+        // Example logic: Check the user repository or database
+        return userRepository.existsByEmail(email);
+    }
+
+
     /*
     public Map<String, String> registerUser(User user, String confirmPassword) {
         Map<String, String> response = new HashMap<>();
@@ -67,8 +90,8 @@ public class AuthService {
         response.put("message", "User registered successfully!");
         return response; // Return success message
     }
-    */
-    /*public boolean loginUser(User user) {
+
+    public boolean loginUser(User user) {
         // Retrieve the user from the repository based on the username
         User existingUser = userRepository.findByUsername(user.getUsername());
 

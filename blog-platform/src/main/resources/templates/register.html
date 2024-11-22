@@ -65,6 +65,12 @@
             <div class="card-body">
                 <h2 class="fw-bold mb-4 text-uppercase text-center">Register</h2>
                 <p class="text-center">Join our community by filling out the form below!</p>
+
+                <!-- Display error message if registrationError is present -->
+                <div th:if="${registrationError}" class="alert alert-danger text-center">
+                    <p th:text="${registrationError}"></p>
+                </div>
+
                 <form th:action="@{/register}" method="post">
                     <!-- Email -->
                     <div class="form-group mb-4">
@@ -73,9 +79,14 @@
                                 id="email"
                                 name="email"
                                 class="form-control form-control-lg"
+                                th:value="${user?.email}"
+                                th:classappend="${emailError != null ? 'is-invalid' : ''}"
                                 required />
                         <label for="email" class="form-label d-block text-center">Email</label>
+                        <!-- Display email error -->
+                        <div class="invalid-feedback" th:if="${emailError}" th:text="${emailError}"></div>
                     </div>
+
                     <!-- Username -->
                     <div class="form-group mb-4">
                         <input
@@ -83,8 +94,12 @@
                                 id="username"
                                 name="username"
                                 class="form-control form-control-lg"
+                                th:value="${user?.username}"
+                                th:classappend="${usernameError != null ? 'is-invalid' : ''}"
                                 required />
                         <label for="username" class="form-label d-block text-center">Username</label>
+                        <!-- Display username error -->
+                        <div class="invalid-feedback" th:if="${usernameError}" th:text="${usernameError}"></div>
                     </div>
 
                     <!-- Password -->
@@ -94,8 +109,11 @@
                                 id="password"
                                 name="password"
                                 class="form-control form-control-lg"
+                                th:classappend="${passwordError != null ? 'is-invalid' : ''}"
                                 required />
                         <label for="password" class="form-label d-block text-center">Password</label>
+                        <!-- Display password error -->
+                        <div class="invalid-feedback" th:if="${passwordError}" th:text="${passwordError}"></div>
                     </div>
 
                     <!-- Confirm Password -->
@@ -107,13 +125,9 @@
                                 class="form-control form-control-lg"
                                 required />
                         <label for="confirmPassword" class="form-label d-block text-center">Confirm Password</label>
+                        <!-- Add error handling for confirmPassword, if needed -->
                     </div>
 
-                    <!-- Error Message -->
-                    <!--<div id="error-message" class="alert alert-danger text-center mt-3" style="display:none;">
-                        An error has occurred. Bad credentials?
-                    </div>
-                    -->
                     <!-- Submit Button -->
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-custom btn-lg px-5" type="submit">
@@ -121,6 +135,7 @@
                         </button>
                     </div>
                 </form>
+
 
                 <!-- Links -->
                 <div class="text-center mt-4">
@@ -131,12 +146,5 @@
     </div>
 </div>
 
-<!-- Error Handling Script -->
-<script>
-    var errorOccurred = true;  // Adjust this as per backend error logic
-    if (errorOccurred) {
-        document.getElementById('error-message').style.display = 'block';
-    }
-</script>
 </body>
 </html>
