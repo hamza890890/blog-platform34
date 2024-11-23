@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PostController {
 
@@ -19,7 +21,17 @@ public class PostController {
         model.addAttribute("posts", postService.findAllPublishedPosts());
         return "index";
     }
+    /*
+    @GetMapping("/timeline")
+    public String showTimeline(Model model) {
+        // Get posts sorted by creation date, from newest to oldest
 
+        List<Post> posts = PostRepository.findAllByOrderByCreatedAtDesc();
+        model.addAttribute("posts", posts);
+        return "timeline"; // The Thymeleaf template name
+    }
+
+     */
     @GetMapping("/post/{id}")
     public String viewPost(@PathVariable("id") Long id, Model model) {
         Post post = postService.findPostById(id);

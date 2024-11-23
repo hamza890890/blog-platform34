@@ -18,6 +18,14 @@ public class AuthService {
 //    @Autowired
     //  private PasswordEncoder;
 
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public boolean validatePassword(User user, String enteredPassword) {
+        // Assuming passwords are hashed, validate accordingly
+        return user.getPassword().equals(enteredPassword);
+    }
     public boolean registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
             return false;

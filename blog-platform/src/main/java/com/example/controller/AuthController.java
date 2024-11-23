@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.Post;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.model.User;
@@ -69,6 +70,8 @@ public class AuthController {
     }
 
 
+
+
     @GetMapping("/register")
     public String showRegisterForm() {
         return "register";
@@ -81,15 +84,27 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String loginUser(User user, Model model) {
-        logger.info("Attempting login for user: {}", user.getUsername());
-        if (authService.loginUser(user)) {
-            logger.info("User {} logged in successfully.", user.getUsername());
-            return "redirect:/personal-feed";
-        } else {
-            logger.error("Login failed for user {}: Invalid credentials.", user.getUsername());
-            model.addAttribute("loginError", "User does not exist, check credentials.");
+    public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
+        logger.info("Attempting login for user: {}", username);
+
+        // Check if the user exists
+        User user = authService.findUserByUsername(username);
+        if (user == null) {
+            logger.error("Login failed: User {} does not exist.", username);
+            model.addAttribute("loginError", "User does not exist. Please register.");
             return "login";
         }
+
+        // Validate the password
+        if (!authService.validatePassword(user, password)) {
+            logger.error("Login failed: Incorrect password for user {}.", username);
+            model.addAttribute("loginError", "Incorrect password. Please try again.");
+            return "login";
+        }
+
+        logger.info("User {} logged in successfully.", username);
+        return "redirect:/personal-view";
     }
+
+
 }

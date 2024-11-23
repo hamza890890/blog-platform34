@@ -50,7 +50,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" th:href="@{/}">Blog Platform</a>
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto"> <!-- Add 'ms-auto' to align links to the right -->
+        <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/}">Home</a>
             </li>
@@ -69,11 +69,17 @@
             <div class="card-body">
                 <h2 class="fw-bold mb-4 text-uppercase text-center">Login</h2>
                 <p class="text-center">Welcome back! Please log in to your account.</p>
+
+                <!-- Login Error Message -->
+                <div th:if="${loginError}" class="alert alert-danger text-center" role="alert">
+                    <p th:text="${loginError}"></p>
+                </div>
+
                 <form th:action="@{/login}" method="post">
-                    <!-- Email -->
+                    <!-- Username -->
                     <div class="form-outline form-white mb-4">
-                        <input type="email" id="username" name="username" class="form-control form-control-lg" placeholder="Enter your email" required>
-                        <label class="form-label d-block text-center" for="username">Email ID</label>
+                        <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Enter your username" required>
+                        <label class="form-label d-block text-center" for="username">Username</label>
                     </div>
 
                     <!-- Password -->
