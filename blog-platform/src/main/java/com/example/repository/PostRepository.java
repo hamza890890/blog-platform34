@@ -9,6 +9,9 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> findAllByPublished(boolean published);
+    List<Post> findAllByPublishedAndPrivacy(boolean published, String privacy);
+
+    List<Post> findAllByPublished(boolean b);
 }
+
 
